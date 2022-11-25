@@ -16,6 +16,7 @@ ui <- fluidPage(
   sidebarLayout(
     # Sidebar Items
     sidebarPanel(
+      # Feature 1: Option to filter for album of interest or selectively view songs that have been streamed x amount of times
       selectInput("albumFilter", "Choose an album", c("All", "Folklore", "Evermore", "Midnights")),
       sliderInput("streamFilter", "Filter by number of streams", min = 0, max = 300000000, value = c(0, 300000000), step = 500000)
     ),
@@ -23,6 +24,7 @@ ui <- fluidPage(
     # MainPanel Items
     mainPanel(
       
+      # Feature 2: Add images for respective albums. Useful as a easy, visual feature for the user to identify each album with
       # Divide images onto one line
       div(style="display:flex;",
           imageOutput("folklore_image", width = "25vw"),
@@ -30,6 +32,7 @@ ui <- fluidPage(
           imageOutput("midnights_image", width = "25vw")
       ),
       
+      # Feature 3: Add plots and table. Utility to the user to visually see highest streaming songs and identify the data behind it. 
       # Tabs for plot and table
       tabsetPanel(
         tabPanel("Plot",
@@ -45,6 +48,7 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   
+  # For feature 1
   # Filter data
     filtered_data <- 
       reactive({
@@ -62,7 +66,8 @@ server <- function(input, output) {
           }
       })
     
-    # Output plot
+    # For feature 3
+    # Output plot. Plot the output of the dynamic data
     output$song_streams <- renderPlot({
       filtered_data() %>% 
         ggplot(aes(x = Title, y = Streams)) +
@@ -73,12 +78,13 @@ server <- function(input, output) {
         labs(x = "Songs", y = "Number of Streams")
       })
     
-    # Output data table
+    # Output data table. Arrange table from most streams to least
     output$data_table <- DT::renderDataTable({
       filtered_data() %>% 
         arrange(desc(Streams))
       })
     
+    # For feature 2
     # Output images. If album filter is applied, then only show that image
     output$folklore_image <- renderImage({
       if (input$albumFilter == "Folklore" | input$albumFilter == "All") {
@@ -87,7 +93,7 @@ server <- function(input, output) {
           contentType = "image/png"
         )} 
       else {
-        list(src = "")
+        list(src = "") # a workaround that suppresses an error message otherwise
       }
     })
     

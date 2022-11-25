@@ -35,7 +35,7 @@ ui <- fluidPage(
         tabPanel("Plot",
                  plotOutput("song_streams")),
         tabPanel("Table",
-                 tableOutput("data_table"))
+                 DT::dataTableOutput("data_table"))
       )
     )
   )
@@ -74,7 +74,7 @@ server <- function(input, output) {
       })
     
     # Output data table
-    output$data_table <- renderTable({
+    output$data_table <- DT::renderDataTable({
       filtered_data() %>% 
         arrange(desc(Streams))
       })

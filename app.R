@@ -24,7 +24,7 @@ ui <- fluidPage(
     # MainPanel Items
     mainPanel(
       
-      # Feature 2: Add images for respective albums. Useful as a easy, visual feature for the user to identify each album with
+      # Feature 2: Add images for respective albums. Useful as an easy, visual feature for the user to identify each album with
       # Divide images onto one line
       div(style="display:flex;",
           imageOutput("folklore_image", width = "25vw"),

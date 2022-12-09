@@ -3,10 +3,14 @@
 Repository for STAT545B that contains the source code for the ShinyApp: Taylor Swift - From Folklore to Midnights Streaming Statistics. 
 
 ## Link to ShinyApp
+#### Assignment B3
 https://jerryhe.shinyapps.io/assignment-b3-jerryyhe/
 
+#### Assignment B4 
+https://jerryhe.shinyapps.io/assignment-b4-jerryyhe/
+
 ## Option B
-I chose option B for this assignment. 
+I chose option B for this assignment B3. 
 
 ## Description of ShinyApp
 This ShinyApp allows the user to interactively view Spotify streaming statistics of Taylor Swift's most recent three albums: Folklore, Evermore, and Midnights. The app shows the user plots of the number of streams for each song in the respective albums, the datatable used to generate the plot, and allows the user to filter through them. Additionally, it also show pictures of the albums. 
@@ -19,7 +23,10 @@ The dataset used for this ShinyApp is available in this repo as `taylor_swift_so
 The file you're reading. 
 
 ### app.R
-The R code used to generate the running instance of this ShinyApp. 
+The R code used to generate the running instance of the ShinyApp for Assignment B3. 
+
+### appb4.R
+The R code used to generate the runniing instance of the ShinyApp for Assignment B4. 
 
 ### taylor_swift_song_streams.csv
 The dataset used for this ShinyApp
